@@ -13,8 +13,6 @@ terraform {
     key                  = "terraform.tfstate"
     use_azuread_auth     = true
     use_oidc             = true
-    subscription_id      = "16e01a00-f825-4c96-8ae2-e68cb52cf653"
-    tenant_id            = "ffab38df-cddf-433f-859a-6cfa161a5ceb"
   }
 
   required_version = ">= 1.2.0"
