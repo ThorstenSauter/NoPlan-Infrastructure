@@ -38,6 +38,8 @@ jobs:
       - name: Terraform Init
         id: init
         run: terraform init
+        env:
+          TF_LOG: TRACE
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
