@@ -1,0 +1,34 @@
+name: Terraform Apply
+
+on:
+  push:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+  ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+  ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+
+jobs:
+  plan:
+    name: Run Terraform Apply
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.2.6
+      - name: Terraform Init
+        id: init
+        run: terraform init -backend-config="subscription_id=${{ env.ARM_SUBSCRIPTION_ID }}" -backend-config="tenant_id=${{ env.ARM_TENANT_ID }}"
+      - name: Terraform Apply
+        id: apply
+        run: terraform apply -auto-approve -input=false
