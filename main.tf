@@ -35,7 +35,7 @@ variable "tags" {
 }
 
 variable "location" {
-    type = string
-    default = "westeurope"
-    description = "The location to deploy Azure resources to"
+  type        = string
+  default     = "westeurope"
+  description = "The location to deploy Azure resources to"
 }
