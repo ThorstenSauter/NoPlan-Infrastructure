@@ -7,12 +7,6 @@ terraform {
   }
 
   backend "azurerm" {
-    resource_group_name  = "rg-terraforn-state-dev-001"
-    storage_account_name = "tfstatenoplandev"
-    container_name       = "tfstate"
-    key                  = "terraform.tfstate"
-    use_azuread_auth     = true
-    use_oidc             = true
   }
 
   required_version = ">= 1.2.0"
