@@ -20,10 +20,14 @@ resource "azurerm_role_assignment" "uami-secrets-user-role" {
 resource "azurerm_role_assignment" "dev-group-secrets-administrator-role" {
   scope                = azurerm_key_vault.vault.id
   role_definition_name = "Key Vault Administrator"
-  principal_id         = var.developer-group-id
+  principal_id         = var.developer-group.id
 }
 
-variable "developer-group-id" {
-  default     = "914fff5e-bedf-443b-82ad-c4ceccb192c3"
-  description = "The object id of the AAD group containing the app developers."
+variable "developer-group" {
+  type    = map(string)
+  default = {
+    id   = "914fff5e-bedf-443b-82ad-c4ceccb192c3"
+    name = "NoPlan Developers"
+  }
+  description = "The AAD group containing the app developers."
 }
