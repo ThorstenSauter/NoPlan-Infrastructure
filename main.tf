@@ -20,7 +20,7 @@ provider "azurerm" {
 data "azurerm_client_config" "current" {}
 
 variable "tags" {
-  type    = map(string)
+  type = map(string)
   default = {
     "environment" : "dev"
     "project" : "noplan"
