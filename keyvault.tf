@@ -23,11 +23,3 @@ resource "azurerm_role_assignment" "dev-group-secrets-administrator-role" {
   principal_id         = var.developer-group.id
 }
 
-variable "developer-group" {
-  type = map(string)
-  default = {
-    id   = "914fff5e-bedf-443b-82ad-c4ceccb192c3"
-    name = "NoPlan Developers"
-  }
-  description = "The AAD group containing the app developers."
-}
